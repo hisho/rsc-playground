@@ -1,7 +1,11 @@
-import { NEXT_PUBLIC_FRONTEND_URL } from '@/constant/constant'
-
 const fetchArticles = async (): Promise<{ message: string }> =>
-  fetch(`${NEXT_PUBLIC_FRONTEND_URL}/articles/api`).then((res) => res.json())
+  fetch(
+    `${
+      process.env.NODE_ENV === 'production'
+        ? `http://localhost:${process.env.NEXT_PUBLIC_PORT}`
+        : `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+    }/articles/api`
+  ).then((res) => res.json())
 
 const Page = async () => {
   const { message } = await fetchArticles()
