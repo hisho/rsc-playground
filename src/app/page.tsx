@@ -1,4 +1,6 @@
+import { NEXT_PUBLIC_FRONTEND_URL } from '@/constant/constant'
+
 const Page = () => {
-  return <div>hoge</div>
+  return <div>{NEXT_PUBLIC_FRONTEND_URL}</div>
 }
 export default Page
